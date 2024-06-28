@@ -14,13 +14,13 @@ import {expensesData} from '../../constants/seeds';
 
 const Home = () => {
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1,}}>
       <StatusBar
         animated={true}
         backgroundColor="#fff"
         barStyle={'dark-content'}
       />
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={{ flex:1}} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <Header header={'Expenses.'} />
 
@@ -44,17 +44,21 @@ const Home = () => {
             </Pressable>
           </View>
         </View>
-        <Divider />
+        {/* <Divider /> */}
 
         {/* All Expenses */}
-        <View style={styles.allExpensesView}>
+      
+        <ScrollView contentContainerStyle={styles.allExpensesView}>
           {expensesData.map((expense, index) => (
             <View key={index} style={styles.allExpensesContainer}>
               <AllExpenses data={expense} />
               {/* <Text style={styles.themedText}>hello</Text> */}
             </View>
-          ))}
-        </View>
+          ))
+          }
+
+        </ScrollView>
+       
       </ScrollView>
     </View>
   );
@@ -92,10 +96,11 @@ const styles = StyleSheet.create({
   },
   allExpensesView: {
     alignItems: 'center',
+    flex: 1,
   },
   allExpensesContainer: {
     width: '93%',
-    height: 100,
+    flex:1,
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 5,
